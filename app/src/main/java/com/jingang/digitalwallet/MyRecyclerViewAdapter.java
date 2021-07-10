@@ -47,9 +47,9 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public void onBindViewHolder(@NonNull @NotNull final MyHolder holder, final int position) {
        holder.cornNameTextView.setText(mData.get(position).name);
        Glide.with(holder.itemView).load(mData.get(position).colorful_image_url)
-               .centerCrop().into(holder.cornImageView);
+               .centerCrop().placeholder(R.drawable.logo).into(holder.cornImageView);
        holder.cornBalanceTextView.setText(mData.get(position).amount+mData.get(position).coid_id);
-        holder.cornBalanceInDollarTextView.setText("$"+ mData.get(position).amount*mData.get(position).rate);
+       holder.cornBalanceInDollarTextView.setText("$"+ mData.get(position).amount*mData.get(position).rate);
     }
 
     @Override
