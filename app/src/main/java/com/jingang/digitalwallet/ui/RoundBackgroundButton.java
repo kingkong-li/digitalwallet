@@ -9,10 +9,9 @@ import android.widget.ImageButton;
 
 
 /**
- * @Description:
+ * @Description: 自定义圆形背景的button
  * @Author: jingang.Li
- * @CreateTime:2021/6/30-10:43 PM
- * @changeTime:
+ * @CreateTime: 2021/6/30-10:43 PM
  */
 public class RoundBackgroundButton extends androidx.appcompat.widget.AppCompatImageButton {
     public RoundBackgroundButton(Context context) {
