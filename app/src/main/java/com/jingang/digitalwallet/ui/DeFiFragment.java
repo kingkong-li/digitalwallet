@@ -1,4 +1,4 @@
-package com.jingang.digitalwallet;
+package com.jingang.digitalwallet.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

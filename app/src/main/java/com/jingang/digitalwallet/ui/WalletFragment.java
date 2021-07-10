@@ -1,4 +1,4 @@
-package com.jingang.digitalwallet;
+package com.jingang.digitalwallet.ui;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -14,13 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.jingang.digitalwallet.R;
 import com.jingang.digitalwallet.bean.DigitalCurrency;
 import com.jingang.digitalwallet.utils.FileUtil;
 
 import java.util.ArrayList;
-import java.util.Currency;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * @Description:  钱包页面布局

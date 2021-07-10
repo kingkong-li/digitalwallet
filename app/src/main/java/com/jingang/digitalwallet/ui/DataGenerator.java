@@ -1,14 +1,11 @@
-package com.jingang.digitalwallet;
+package com.jingang.digitalwallet.ui;
 
-import android.companion.DeviceFilter;
 import android.content.Context;
-import android.service.quickaccesswallet.WalletCard;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+
+import com.jingang.digitalwallet.R;
 
 
 /**

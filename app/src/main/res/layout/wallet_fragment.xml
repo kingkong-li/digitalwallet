@@ -63,7 +63,7 @@
             android:layout_marginBottom="20dp"
             android:gravity="center_horizontal">
 
-            <com.jingang.digitalwallet.ui.RoundBackgroundButton
+            <com.jingang.digitalwallet.view.RoundBackgroundButton
                 android:id="@+id/send"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -71,7 +71,7 @@
                 android:scaleType="fitXY"
                 android:src="@mipmap/send" />
 
-            <com.jingang.digitalwallet.ui.RoundBackgroundButton
+            <com.jingang.digitalwallet.view.RoundBackgroundButton
                 android:id="@+id/receive"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
