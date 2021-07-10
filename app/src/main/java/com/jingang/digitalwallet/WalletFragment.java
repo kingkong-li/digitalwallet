@@ -46,14 +46,7 @@ public class WalletFragment extends Fragment {
                 LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
-        HashMap<String,Integer> balanceMap=new HashMap<>();
-        String balanceString=FileUtil.getStringFromAssets("wallet-balance.json");
-        JSONObject balanceJson=JSONObject.parseObject(balanceString);
-        JSONArray  balanceArray=balanceJson.getJSONArray("wallet");
-        for(int i=0;i<balanceArray.size();i++){
-            JSONObject jsonObject=balanceArray.getJSONObject(i);
-            balanceMap.put(jsonObject.getString("currency"), jsonObject.getIntValue("amount"));
-        }
+
 
         HashMap<String,Float> rateMap=new HashMap<>();
         String rateString=FileUtil.getStringFromAssets("live-rates.json");
@@ -67,7 +60,7 @@ public class WalletFragment extends Fragment {
         }
 
 
-        ArrayList<DigitalCurrency> digitalCurrencyList=new ArrayList<>();
+        HashMap<String,DigitalCurrency> currencyMap=new HashMap<>();
         String jsonData= FileUtil.getStringFromAssets("currencies.json");
         JSONObject curreniesJson=
                 JSONObject.parseObject(jsonData);
@@ -76,15 +69,29 @@ public class WalletFragment extends Fragment {
             DigitalCurrency currency=new DigitalCurrency();
             currency.coid_id=currencyInfList.getJSONObject(i).getString("coin_id");
             currency.name=currencyInfList.getJSONObject(i).getString("name");
-            currency.amount=balanceMap.get(currency.coid_id);
-            currency.rate=rateMap.get(currency.coid_id);
-            mTotalValue=mTotalValue+ currency.amount+currency.rate;
             currency.colorful_image_url=currencyInfList.getJSONObject(i).getString("colorful_image_url");
 //            currency.colorful_image_url="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fdik.img.kttpdq.com%2Fpic%2F101%2F70661%2Fadd59b8c29886a2d_1440x900.jpg&refer=http%3A%2F%2Fdik.img.kttpdq.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1628477244&t=6334f2a9826053cec571b52027291ce8";
-            digitalCurrencyList.add(currency);
+            currencyMap.put(currency.coid_id, currency);
 
         }
-        recyclerView.setAdapter(new MyRecyclerViewAdapter(digitalCurrencyList));
+
+        ArrayList<DigitalCurrency> balanceList=new ArrayList<>();
+        String balanceString=FileUtil.getStringFromAssets("wallet-balance.json");
+        JSONObject balanceJson=JSONObject.parseObject(balanceString);
+        JSONArray  balanceArray=balanceJson.getJSONArray("wallet");
+        for(int i=0;i<balanceArray.size();i++){
+            DigitalCurrency digitalCurrency=new DigitalCurrency();
+            JSONObject jsonObject=balanceArray.getJSONObject(i);
+            digitalCurrency.coid_id=jsonObject.getString("currency");
+            digitalCurrency.name=currencyMap.get(digitalCurrency.coid_id).name;
+            digitalCurrency.colorful_image_url=currencyMap.get(digitalCurrency.coid_id).
+                    colorful_image_url;
+            digitalCurrency.amount=jsonObject.getIntValue("amount");
+            digitalCurrency.rate=rateMap.get(digitalCurrency.coid_id);
+            mTotalValue=mTotalValue+digitalCurrency.amount*digitalCurrency.rate;
+            balanceList.add(digitalCurrency);
+        }
+        recyclerView.setAdapter(new MyRecyclerViewAdapter(balanceList));
         totalMoneyTextView.setText(String.valueOf(mTotalValue));
         return view;
     }

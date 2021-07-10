@@ -14,7 +14,7 @@ import java.io.InputStreamReader;
  * @CreateTime: 2021/7/10-4:37 PM
  */
 public class FileUtil {
-    public static String getStringFromAssets(String fileName) {
+    public static synchronized String getStringFromAssets(String fileName) {
         StringBuilder stringBuilder = new StringBuilder();
         try {
             AssetManager assetManager = MainApp.getApplication().getAssets();
