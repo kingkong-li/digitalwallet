@@ -55,7 +55,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textColor="#FFFFFF"
-            android:textSize="22sp" />
+            android:textStyle="bold"
+            android:textSize="20sp" />
 
         <RelativeLayout
             android:layout_width="match_parent"

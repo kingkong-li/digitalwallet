@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.tabs.TabLayout;
 import com.jingang.digitalwallet.R;
 import com.jingang.digitalwallet.base.BaseActivity;
+import com.jingang.digitalwallet.base.BasePresenter;
 
 
 public class MainActivity extends BaseActivity {
@@ -26,6 +27,11 @@ public class MainActivity extends BaseActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
+    }
+
+    @Override
+    protected BasePresenter createPresenter() {
+        return null;
     }
 
     private void initView() {
@@ -85,4 +91,8 @@ public class MainActivity extends BaseActivity {
             }
         }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

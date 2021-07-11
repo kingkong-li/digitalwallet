@@ -19,4 +19,5 @@ public class MainApp extends Application {
     public static MainApp getApplication(){
         return sInstance;
     }
+
 }
