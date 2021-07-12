@@ -45,8 +45,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
        holder.cornNameTextView.setText(mData.get(position).name);
        Glide.with(holder.itemView).load(mData.get(position).colorful_image_url)
                .centerCrop().placeholder(R.drawable.logo).into(holder.cornImageView);
-       holder.cornBalanceTextView.setText(mData.get(position).amount+mData.get(position).coid_id);
-       holder.cornBalanceInDollarTextView.setText("$"+ mData.get(position).amount*mData.get(position).rate);
+       holder.cornBalanceTextView.setText(new StringBuilder().append(mData.get(position).amount).
+               append(" ").append(mData.get(position).coid_id).toString());
+       holder.cornBalanceInDollarTextView.setText(new StringBuilder().append("$").
+               append(mData.get(position).amount * mData.get(position).rate).toString());
     }
 
     @Override

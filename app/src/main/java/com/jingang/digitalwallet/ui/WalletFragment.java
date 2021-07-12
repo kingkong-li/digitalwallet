@@ -36,7 +36,7 @@ public class WalletFragment extends BaseFragment<WalletPresenter> {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(new MyRecyclerViewAdapter( mPresenter.getBalanceList()));
         totalMoneyTextView.setText(new StringBuilder().append("$").
-                append(String.valueOf(mPresenter.getTotalMoney())).append(" USD").toString());
+                append(mPresenter.getTotalMoney()).append(" USD").toString());
         return view;
     }
 
